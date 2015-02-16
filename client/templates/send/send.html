@@ -1,0 +1,33 @@
+<template name="send">
+	<div class="ui segment" id="announcement">
+		<h2 class="ui header">
+		  <i class="green send icon"></i>
+		  <div class="content">
+		    Send Funds
+		    <div class="sub header">Enter a Cannacoin address and amount below to send funds.</div>
+		  </div>
+		</h2>	
+	</div>
+	{{#if scanTrue}}
+		<div class="ui segment">
+			{{> qrScanner w=320 h=240}}
+			<div class="ui fluid bottom attached red button" id="scanCancel">
+				<i class="ban icon"></i>CANCEL
+			</div>
+		</div>
+	{{/if}}
+	<div class="ui attached form segment">
+	    <div class="field">
+	      <label>Send Address</label>
+	      <div class="ui action input">
+	        <input type="text" placeholder="Enter an address..." id="sendAddress">
+	        <div class="ui green icon button" id="scan"><i class="qrcode icon"></i></div>
+	      </div>
+	    </div>
+	    <div class="field">
+	      <label>Send Amount</label>
+	      <input placeholder="Amount" type="number" id="sendAmount">
+	    </div>
+	</div>
+    <div class="ui bottom attached green button" id="send"><i class="send icon"></i>SEND</div>
+</template>

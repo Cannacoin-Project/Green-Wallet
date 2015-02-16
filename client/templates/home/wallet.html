@@ -1,0 +1,75 @@
+<template name="wallet">
+    
+	<!-- Wallet announcement -->
+	<div class="ui segment">
+		<h2 class="ui header">
+		  <i class="green announcement icon"></i>
+		  <div class="content">
+		    Hey there!
+		    <div class="sub header">Welcome to GreenWallet, the easiest most mobile friendly crypto wallet for CCN!</div>
+		  </div>
+		</h2>	
+	</div>
+	
+	<!-- Wallet stats Sent/Recieved/Balance -->
+	<div class="ui segment">
+		<div class="ui mini statistics">
+			<div class="ui grid">
+				<div class="four wide column">
+					<div class="red statistic">
+						<div class="value">
+							<i class="red chevron up icon"></i> {{sent}}
+						</div>
+						<div class="label">
+							Sent
+						</div>
+					</div>
+				</div>
+				<div class="four wide column">
+					<div class="blue statistic">
+						<div class="value">
+							<i class="blue chevron down icon"></i> {{received}}
+						</div>
+						<div class="label">
+							Recieved
+						</div>
+					</div>
+				</div>
+				<div class="ui vertical divider"></div>
+				<div class="eight wide column">
+					<div class="green statistic">
+						<div class="value">
+                            {{getBalance}}
+						</div>
+						<div class="label">
+							Balance
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Wallet history -->
+	<h3 class="ui header">
+	  History: 
+	</h3>
+	<table class="ui small green table">
+	  <tbody>
+        {{> txs}}
+        {{#each transactions}}
+            <tr>
+              <td>Address: {{address}}</td>
+              <td>Amount: {{amount}}</td>
+              <td>Confirmations: {{confirmations}}</td>
+            </tr>
+        {{/each}}
+	  </tbody>
+	</table>
+
+</template>
+
+<template name="txs">
+    {{> pages}}
+    {{> pagesNav}}  <!--Bottom navigation-->
+</template>

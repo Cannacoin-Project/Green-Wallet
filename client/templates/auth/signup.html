@@ -1,0 +1,29 @@
+<template name="signup">
+	<form class="ui form" id="signup-form">
+		<div class="ui green top attached segment">
+			<h4 class="ui header">Sign-up Below</h4>
+			<div class="field">
+				<input type="text" id="email" placeholder="Email">
+			</div>
+			<div class="required field">
+				<div class="ui icon input">
+					<input type="password" id="password" placeholder="Password">
+					<i class="lock icon"></i>
+				</div>
+			</div>
+			<div class="field">
+				<div class="ui checkbox" id="terms-of-service-link">
+					<input type="checkbox" name="hot-deals">
+					<label>I agree to the <a href="#">Terms of Service</a>.</label>
+				</div>
+				
+			</div>
+		</div>
+		<button type="submit" class="ui bottom attached green fluid submit button">Register</button>
+	</form>
+	<p align="center" style="padding-top: 10px;">I already have an account, <a href="/signin">get me outa here!</a></p>
+
+	<div class="hidden" id="terms-of-service">
+		{{> termsofservice}}
+	</div>
+</template>

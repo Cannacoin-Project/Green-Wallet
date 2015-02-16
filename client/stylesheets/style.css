@@ -1,0 +1,51 @@
+body{
+	background-image: url(http://subtlepatterns.com/patterns/contemporary_china.png);
+}
+
+.hidden{
+	display: none;
+}
+
+.container {
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+}
+
+.ui.statistics > .statistic {
+	margin-bottom: 5px;
+}
+
+.details {
+	text-align: right;
+	padding-right: 10px;
+}
+
+.address-text {
+ 	text-align: center;
+	color: #999999;
+	font-size: 12px;
+}
+
+.ui .header {
+	margin-top: 3px;
+}
+
+.ui.mini.statistics .statistic > .value, .ui.mini.statistic > .value{
+	font-size: 12px;
+}
+a {
+	color: #4cb25e;
+}
+
+.ui.segment.greenAddress{
+    z-index: 999;
+    color: #4db35f;
+    font-weight: 600;
+    border-left: solid 4px #4cb25e;
+    border-right: none;
+    background: #f6f6f6;
+    -webkit-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.1);
+}

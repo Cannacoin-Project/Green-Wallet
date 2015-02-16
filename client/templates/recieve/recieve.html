@@ -1,0 +1,18 @@
+<template name="receive">
+	<div class="ui segment">
+		<h2 class="ui header">
+		  <i class="green money icon"></i>
+		  <div class="content">
+		    Recieve Funds
+		    <div class="sub header">Share your public Cannacoin address with anyone to recieve funds.</div>
+		  </div>
+		</h2>	
+	</div>
+	<div class="ui top attached segment">
+		<div id="qrCode" align="center"></div>
+	</div>
+	{{#each addresses}}
+		<div class="ui attached segment address-text" id="{{this}}"><p>{{this}}</p></div>
+	{{/each}}
+	<div class="ui bottom attached green button" id="generate-address">GENERATE ADDRESS</div>
+</template>

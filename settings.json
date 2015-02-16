@@ -1,0 +1,22 @@
+{
+  "public":{
+    "setting1": "your public settings goes here!",
+    "setting2": "These are available to the client!"
+  },
+  "wallet": {
+    "host": "localhost",
+    "port": "7142",
+    "user": "test",
+    "pass": "test123",
+    "fullName": "Cannacoin",
+    "timeout": "30000",
+    "maxAccounts": 1
+  },
+  "errors": {
+    "general": "General server error, unable to contact coin daemon.",
+    "noBalance": "You don't have a balance",
+    "noAddress": "You don't have an address",
+    "maxAccounts": "Sorry the maximum number of address is currently 3.",
+    "insufficientFunds": "Insufficient funds, please lower the amount and try again."
+  }
+}

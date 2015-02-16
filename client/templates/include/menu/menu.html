@@ -1,0 +1,7 @@
+<template name="menu">
+	<div class="ui small fluid four item labeled icon inverted green menu">
+		{{#each menuItems}}
+			<a href="{{href}}" class="{{class}}" id="{{id}}"><i class="{{icon}}"></i>{{name}}</a>
+		{{/each}}
+	</div>
+</template>

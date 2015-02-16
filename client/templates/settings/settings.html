@@ -1,0 +1,108 @@
+<template name="settings">
+	<div class="ui segment">
+		<h2 class="ui header">
+			<i class="green settings icon"></i>
+			<div class="content">
+				User Settings
+				<div class="sub header">
+					Keep your details up to date, edit your user settings & notification options here.
+				</div>
+			</div>
+		</h2>	
+	</div>
+    <div class="ui fluid styled accordion">
+        <div class="active title">
+            <i class="dropdown icon"></i>
+            User Settings.
+        </div>
+        <div class="active content">
+            <form class="ui form">
+                <h4 class="ui dividing header">Account Info</h4>
+                <div class="two fields">
+                    <div class="required field">
+                        <label>Username</label>
+                        <div class="ui icon input">
+                            <input type="text" placeholder="Username">
+                            <i class="user icon"></i>
+                        </div>
+                    </div>
+                    <div class="required field">
+                        <label>Password</label>
+                        <div class="ui icon input">
+                            <input type="password">
+                            <i class="lock icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="ui dividing header">Settings</h4>
+                <h5 class="ui header">Privacy</h5>
+                <div class="field">
+                    <div class="ui toggle checkbox">
+                        <input type="radio" name="privacy">
+                        <label>Allow <b>anyone</b> to see my account</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui toggle checkbox">
+                        <input type="radio" name="privacy">
+                        <label>Allow <b>only friends</b> to see my account</label>
+                    </div>
+                </div>
+                <h5 class="ui header">Newsletter Subscriptions</h5>
+                <div class="field">
+                    <div class="ui slider checkbox">
+                        <input type="checkbox" name="newslett">
+                        <label>Monthly Newsletter</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui slider checkbox">
+                        <input type="checkbox" name="promos">
+                        <label>Pomotional deals</label>
+                    </div>
+                </div>
+                <div class="ui hidden divider"></div>
+                <div class="ui error message">
+                    <div class="header">We noticed some issues</div>
+                </div>
+                <div class="ui fluid green submit button">Save</div>
+            </form>
+        </div>
+        <div class="title">
+            <i class="dropdown icon"></i>
+            Network Settings: {{#if getInfo}} Online {{else}} Offline {{/if}}
+        </div>
+
+        <div class="content">
+            {{#if getInfo}}
+                <ul>
+                    <li>Balance: {{getInfo.balance}}</li>
+                    <li>version: {{getInfo.version}}</li>
+                    <li>Protocolversion: {{getInfo.protocolversion}}</li>
+                    <li>Walletversion: {{getInfo.walletversion}}</li>
+                    <li>Unconfirmedbalance: {{getInfo.unconfirmedbalance}}</li>
+                    <li>Stake: {{getInfo.stake}}</li>
+                    <li>Locked: {{getInfo.locked}}</li>
+                    <li>Encrypted: {{getInfo.encrypted}}</li>
+                    <li>Blocks: {{getInfo.blocks}}</li>
+                    <li>Timeoffset: {{getInfo.timeoffset}}</li>
+                    <li>Moneysupply: {{getInfo.moneysupply}}</li>
+                    <li>Connections: {{getInfo.connections}}</li>
+                    <li>Proxy: {{getInfo.proxy}}</li>
+                    <li>Difficulty: {{getInfo.difficulty}}</li>
+                    <li>Testnet: {{getInfo.testnet}}</li>
+                    <li>Keypoololdest: {{getInfo.keypoololdest}}</li>
+                    <li>Keypoolsize: {{getInfo.keypoolsize}}</li>
+                    <li>Paytxfee: {{getInfo.paytxfee}}</li>
+                    <li>Mininput: {{getInfo.mininput}}</li>
+                    <li>Errors: {{getInfo.errors}}</li>
+                </ul>
+            {{else}}
+                <p>Sorry, the server is currently offline.</p>
+            {{/if}}
+        </div>
+    </div>
+	<div class="ui segment">
+		<div class="ui fluid red button" id="logout-button"><i class="log out icon"></i>LOG OUT</div>
+	</div>
+</template>
