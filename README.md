@@ -34,6 +34,9 @@ Some key features are still missing and will be integrated in the coming weeks.
 - Add basic unit testing using Mochajs/Chai.
 - ~~Add basic integration testing using Mochajs/Phantomjs & Casperjs.~~
 - ~~Setup shippable.com continuous integration file & bash script (SubCreative will do this).~~
+- Log server method errors & possibly add a gaurd dog / spam watch for potential attacks.
+- Add a walletCount function to determine the current count of wallets for each user.
+- Push new address to our account document by using label name from input (ie. Savings).
 
 # TESTING
 

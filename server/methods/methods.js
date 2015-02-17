@@ -18,7 +18,7 @@ Meteor.methods({
         var getInfo = Async.runSync(function(done) {
             wallet.getInfo(function(err, data) {
                 if(err){
-                    //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds?
+                    //TODO: Lets log these in some fashion via DB. An alert any time a user tries too many times?
                     done(err, null);
                 }
                 done(null, data);
@@ -30,7 +30,7 @@ Meteor.methods({
         var getBalance = Async.runSync(function(done) {
             wallet.getBalance(Meteor.userId(), function(err, data) {
                 if(err){
-                    //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds?
+                    //TODO: Lets log these in some fashion via DB. An alert any time a user tries too many times?
                     done(err, null);
                 }
                 done(null, data);
@@ -47,7 +47,7 @@ Meteor.methods({
         var getAddressesByAccount = Async.runSync(function(done) {
             wallet.getAddressesByAccount(Meteor.userId(), function(err, data) {
                 if(err){
-                    //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds?
+                    ////TODO: Lets log these in some fashion via DB. An alert any time a user tries too many times to generate address?
                     done(err, null);
                 }
                 done(null, data);
@@ -68,7 +68,6 @@ Meteor.methods({
             var getAccountAddress = Async.runSync(function(done) {
                 wallet.getAccountAddress(Meteor.userId(), function(err, data) {
                     if(err){
-                        //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds?
                         done(err, null);
                     }
                     else{
@@ -98,14 +97,19 @@ Meteor.methods({
         var listTransactions = Async.runSync(function(done) {
             wallet.listTransactions(Meteor.userId(), function(err, data) {
                 if(err){
-                    //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds?
                     done(err, null);
                 }
                 else
                     done(null, data);
             });
         });
-        return listTransactions
+        if(listTransactions.result){
+            return listTransactions
+        } else {
+            //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds?
+            console.log('Meteor Method: listTransactions Error: ', listTransactions.error);
+        }
+
     },
     "send": function(address, amount){
         var balance = Meteor.call('getBalance');
@@ -116,10 +120,9 @@ Meteor.methods({
                 amount = parseFloat(amount);
                 wallet.sendFrom(userId, address, amount, function(err, data) {
                     if(err){
-                        //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds? Guard dog?
+
                         done(err, null);
                     }
-
                     //Create new transaction object
                     txObject = {
                         'userId': userId,
@@ -140,6 +143,7 @@ Meteor.methods({
 
             return sendFrom;
         } else {
+            //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds? Guard dog?
             return {error: Meteor.settings.errors.insufficientFunds};
         }
     }
