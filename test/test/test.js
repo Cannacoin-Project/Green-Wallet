@@ -1,5 +1,5 @@
-var env = require('system').env;
-var url = env.ROOT_URL;
+//TODO: this needs to be pulled from env.
+var url = 'localhost:3000';
 
 describe("Example Tests", function() {
     before(function() {
