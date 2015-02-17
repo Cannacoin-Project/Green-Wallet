@@ -4,14 +4,14 @@
 
 [![Build Status](https://api.shippable.com/projects/54e3067d5ab6cc13528c48c9/badge?branchName=master)](https://app.shippable.com/projects/54e3067d5ab6cc13528c48c9/builds/latest)
 
-<b>Caution:<b> DO NOT TAKE THIS BADGE AS AN INDICATOR OF A PRODUCTION WORTH APP.
+<b>Caution:<b> DO NOT TAKE THIS BADGE AS AN INDICATOR OF A PRODUCTION READY APP.
 
 This project is still in development & is not suitable for production use.
 
 Some key features are still missing and will be integrated in the coming weeks.
 
 
-<ul>Join the Green Wallet project by submitting your pull requests today! Forks & branches are encouraged!</ul>
+<u>Join the Green Wallet project by submitting your pull requests today! Forks & branches are encouraged!</u>
 
 # Getting Started
 - Download & Install the latest version of Meteor.js framework
