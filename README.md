@@ -37,3 +37,8 @@ Some key features are still missing and will be integrated in the coming weeks.
 
 # TESTING
 
+Add some tests cases, don't be scurred.
+
+# Known Issues:
+
+- Received transactions is not in sync, see TODO's we have an item on the list.
