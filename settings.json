@@ -10,7 +10,7 @@
     "pass": "test123",
     "fullName": "Cannacoin",
     "timeout": "30000",
-    "maxAccounts": 1,
+    "maxAccounts": 3,
     "minFee": "0.001",
     "refreshTimer": "10 "
   },

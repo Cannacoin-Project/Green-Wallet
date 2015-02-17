@@ -60,21 +60,37 @@ Meteor.methods({
         }
     },
     "getAccountAddress": function(){
-        //TODO: Pull walletCount from databse
-        var walletCount = 2;
-        if(walletCount <= Meteor.settings.wallet.maxAccounts){
+        //TODO: Pull walletCount from Accounts collection in database
+        var walletCount = 3;
+        var userId = Meteor.userId();
+        var label = 'test';
+        if(walletCount < Meteor.settings.wallet.maxAccounts){
             var getAccountAddress = Async.runSync(function(done) {
                 wallet.getAccountAddress(Meteor.userId(), function(err, data) {
                     if(err){
                         //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds?
                         done(err, null);
                     }
-                    else
+                    else{
+                        //Create new account address object
+                        data = {
+                            label: label,
+                            addressObject: {
+                                'address': data,
+                                'created': timeStamp()
+                            }
+                        };
                         done(null, data);
+                    }
                 });
             });
-            return getAccountAddress.result
+            //TODO: Push a new address to our account using the label given from the input.
+            //Accounts.update({label: getAccountAddress.result.label}, { $push: {'labels.label': getAccountAddress.result.addressObject} }, {upsert: true} );
+
+            return getAccountAddress.result.addressObject;
+
         } else {
+            //TODO: Lets log these in some fashion via DB. An alert any time a user tries too many times to create an address? Spam watch?
             return {error: Meteor.settings.errors.maxAccounts};
         }
     },
@@ -100,7 +116,7 @@ Meteor.methods({
                 amount = parseFloat(amount);
                 wallet.sendFrom(userId, address, amount, function(err, data) {
                     if(err){
-                        //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds?
+                        //TODO: Lets log these in some fashion via DB. An alert any time a user tries to many times after this insuff funds? Guard dog?
                         done(err, null);
                     }
 
@@ -108,6 +124,7 @@ Meteor.methods({
                     txObject = {
                         'userId': userId,
                         'timestamp': timeStamp(),
+                        "type": "Sent",
                         'address': address,
                         'amount': amount.toFixed(8),
                         'txId': data

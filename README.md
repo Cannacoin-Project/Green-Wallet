@@ -23,9 +23,11 @@ Some key features are still missing and will be integrated in the coming weeks.
 
 # TODO's:
 
-- Insert new mongo document for each generated address (currently pulling from daemon directly).
+- Insert new mongo document for each generated address (half done, currently pulling from daemon directly).
 - ~~Insert new mongo document for sent transactions.~~
 - ~~Daemonize getInfo server method and update details in network collection.~~
+- ~~Calculate sent tx from DB~~
+-- ~~Calculate receieved tx from DB~~
 - Configure coin daemon walletnotify feature to insert incoming tx's into our database.
 - Add transaction pagination 
 - Make the user settings actually work... (form is already in place, just need to pull from DB).

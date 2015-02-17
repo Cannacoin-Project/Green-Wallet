@@ -15,7 +15,7 @@ var send = {
 };
 
 var recieve = {
-    name: "RECIEVE",
+    name: "RECEIVE",
     icon: "chevron down icon",
     class: "item",
      href: "/receive",
