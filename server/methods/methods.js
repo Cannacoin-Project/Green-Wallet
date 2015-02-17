@@ -72,20 +72,36 @@ Meteor.methods({
                     done(null, data);
             });
         });
-        return listTransactions.result
+        return listTransactions
     },
     "send": function(address, amount){
         var balance = Meteor.call('getBalance');
-        if(amount <= balance - 0.001){
+        var minFee = parseFloat(Meteor.settings.wallet.minFee);
+        var userId = Meteor.userId();
+        if(amount <= balance - minFee){
             var sendFrom = Async.runSync( function(done) {
                 amount = parseFloat(amount);
-                wallet.sendFrom(Meteor.userId(), address, amount, function(err, data) {
+                wallet.sendFrom(userId, address, amount, function(err, data) {
                     if(err)
                         return done(err, null);
-                    else
-                        done(null, data);
+
+                    //Create new transaction object
+                    txObject = {
+                        'userId': userId,
+                        'timestamp': timeStamp(),
+                        'address': address,
+                        'amount': amount.toFixed(8),
+                        'txId': data
+                    };
+
+                    //Callback with done();
+                    done(null, txObject);
                 });
             });
+
+            //Add new document to our Transaction collection.
+            Transactions.insert(sendFrom.result);
+
             return sendFrom;
         } else {
             return {error: Meteor.settings.errors.insufficientFunds};

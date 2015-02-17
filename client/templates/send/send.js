@@ -20,7 +20,7 @@ Template.send.events({
             if(data.error){
                 toastr.error('Error: ' + data.error);
             } else {
-                toastr.success('Transaction sent successfully! <br> TxID: ' + data.result);
+                toastr.success('Transaction sent successfully! <br> TxID: ' + data.result.txId);
                 $('#sendAddress').val('');
                 $('#sendAmount').val('');
             }

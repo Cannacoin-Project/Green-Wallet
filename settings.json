@@ -10,7 +10,8 @@
     "pass": "test123",
     "fullName": "Cannacoin",
     "timeout": "30000",
-    "maxAccounts": 1
+    "maxAccounts": 1,
+    "minFee": "0.001"
   },
   "errors": {
     "general": "General server error, unable to contact coin daemon.",

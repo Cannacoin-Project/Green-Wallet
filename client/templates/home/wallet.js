@@ -1,3 +1,22 @@
+Tracker.autorun(function(){
+    if(Session.get('transactions')) {
+        var txs = Session.get('transactions');
+        var sent = [];
+        var received = [];
+
+        for(i = 0; i < txs.length; i++){
+            if(txs[i].amount < 0){
+                sent.push(txs[i]);
+            }
+            if(txs[i].amount > 0){
+                received.push(txs[i]);
+            }
+        }
+
+        Session.set('sent', sent.length);
+        Session.set('received', received.length);
+    }
+});
 
 Template.wallet.helpers({
     "transactions": function(){
@@ -5,29 +24,11 @@ Template.wallet.helpers({
             if(err){
                 Session.set('error', err)
             } else {
-                Session.set('transactions', data);
+                Session.set('transactions', data.result);
             }
         });
         return Session.get('transactions');
     },
-    "sent": function(){
-        var sent = [];
-        var txs = Session.get('transactions');
-        for(i = 0; i < txs.length; i++){
-            if(txs[i].amount < 0){
-                sent.push(txs[i]);
-            }
-        }
-        return sent.length;
-    },
-    "received": function(){
-        var received = [];
-        var txs = Session.get('transactions');
-        for(i = 0; i < txs.length; i++){
-            if(txs[i].amount > 0){
-                received.push(txs[i]);
-            }
-        }
-        return received.length;
-    }
+    "sent": Session.get('sent'),
+    "received": Session.get('received')
 });
