@@ -11,3 +11,10 @@ Join the Green Wallet project by submitting your pull requests today! Forks & br
 - From the command line run the follow: meteor --settings="settings.json"
 
 (If you're unsure what to work on, search "TODO:" and find something that needs work!)
+
+# TODO's:
+
+- Insert new mongo document for each generated address (currently pulling from daemon direclty)
+- Insert new mongo document for sent transactions
+- Configure coin daemon walletnotify feature to insert incoming tx's into our database
+- Basic test cases using Mochajs/Phantomjs & Casperjs
