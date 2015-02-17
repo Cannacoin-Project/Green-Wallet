@@ -15,6 +15,7 @@ install:
 before_script:
   - mkdir -p shippable/testresults
   - cd test
+  - wget https://raw.githubusercontent.com/JoshDellay/devops/master/shippable/run-tests -O run-tests
 script: bash ./run-tests
 notifications:
   email:
