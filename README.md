@@ -15,7 +15,7 @@ Join the Green Wallet project by submitting your pull requests today! Forks & br
 # TODO's:
 
 - Insert new mongo document for each generated address (currently pulling from daemon directly).
-- --Insert new mongo document for sent transactions.--
+- ~~Insert new mongo document for sent transactions.~~
 - Configure coin daemon walletnotify feature to insert incoming tx's into our database.
 - Add transaction pagination 
 - Make the settings actually work... (form is already in place, just need to pull from DB).
