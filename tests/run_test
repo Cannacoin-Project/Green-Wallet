@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# create a default settings file (if it doesn't exist)
+if [ ! -f "settings.test.json" ]
+then
+  printf '{\n\t"public": {\n\t\t"env": "test"\n\t}\n}' >> settings.test.json
+fi
+
+# set the meteor environment
+export ROOT_URL="http://127.0.0.1:3000"
+export BIND_IP="127.0.0.1"
+export PORT="3000"
+export MONGO_URL="mongodb://127.0.0.1:27017/${PWD##*/}"
+export NODE_ENV="development"
+export METEOR_ENV="${NODE_ENV}"
+
+# drop the mongo database so the test run fresh
+mongo --eval "db.dropDatabase()" > /dev/null
+
+# run meteor in the background
+nohup meteor run --settings settings.test.json > .nohup.out 2>&1&
+
+# wait for meteor to start
+while [ 1 ]; do
+    wget --quiet --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 0 --continue ${ROOT_URL} -O /dev/null
+    if [ $? = 0 ]; then break; fi; # check return value, break if successful (0)
+    sleep 2s;
+done;
+
+if [ $? -ne 0 ]
+then
+  echo "Unable to connect to Meteor"
+  exit 1
+fi
+
+# run our mocha-casperjs and output test file
+mocha-casperjs --reporter=xunit > ../shippable/testresults/xunit.xml
+
+# cache the exit code of the test runner
+result=$?
+
+# stop meteor
+ps -ef | grep meteor | grep -v grep | awk '{print $2}' | xargs kill -9
+
+# return the test runner exit code
+exit ${result}

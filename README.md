@@ -1,6 +1,12 @@
+
+
 # Green Wallet Staging/Integration
 
-Caution: This project is still in development & is not suitable for production use. Some key features are still missing and will be integrated soon.
+[![Build Status](https://api.shippable.com/projects/54e3067d5ab6cc13528c48c9/badge?branchName=master)](https://app.shippable.com/projects/54e3067d5ab6cc13528c48c9/builds/latest)
+Caution: DO NOT TAKE THIS BADGE AS AN INDICATOR OF A PRODUCTION WORTH APP.
+This project is still in development & is not suitable for production use.
+Some key features are still missing and will be integrated in the coming weeks.
+
 
 Join the Green Wallet project by submitting your pull requests today! Forks & branches are encouraged!
 
@@ -16,9 +22,13 @@ Join the Green Wallet project by submitting your pull requests today! Forks & br
 
 - Insert new mongo document for each generated address (currently pulling from daemon directly).
 - ~~Insert new mongo document for sent transactions.~~
+- ~~Daemonize getInfo server method and update details in network collection.~~
 - Configure coin daemon walletnotify feature to insert incoming tx's into our database.
 - Add transaction pagination 
-- Make the settings actually work... (form is already in place, just need to pull from DB).
+- Make the user settings actually work... (form is already in place, just need to pull from DB).
 - Add basic unit testing using Mochajs/Chai.
-- Add basic integration testing using Mochajs/Phantomjs & Casperjs.
-- Setup shippable.com continuous integration file & bash script (SubCreative will do this).
+- ~~Add basic integration testing using Mochajs/Phantomjs & Casperjs.~~
+- ~~Setup shippable.com continuous integration file & bash script (SubCreative will do this).~~
+
+# TESTING
+

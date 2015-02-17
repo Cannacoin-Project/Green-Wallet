@@ -11,13 +11,14 @@
     "fullName": "Cannacoin",
     "timeout": "30000",
     "maxAccounts": 1,
-    "minFee": "0.001"
+    "minFee": "0.001",
+    "refreshTimer": "10 "
   },
   "errors": {
     "general": "General server error, unable to contact coin daemon.",
     "noBalance": "You don't have a balance",
     "noAddress": "You don't have an address",
-    "maxAccounts": "Sorry the maximum number of address is currently 3.",
+    "maxAccounts": "Sorry the maximum number of addresses is currently 3.",
     "insufficientFunds": "Insufficient funds, please lower the amount and try again."
   }
 }

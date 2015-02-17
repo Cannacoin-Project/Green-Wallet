@@ -10,3 +10,5 @@ Template.settings.events({
         Router.go('/signin')
     }
 });
+
+

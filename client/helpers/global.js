@@ -1,12 +1,5 @@
 Template.registerHelper('getInfo', function(){
-    Meteor.call('getInfo',  function(err, data){
-        if(err){
-            Session.set('error', err)
-        } else {
-            Session.set('status', data);
-        }
-    });
-    return Session.get('status');
+    return Network.findOne();
 });
 
 Template.registerHelper('getBalance', function() {
@@ -19,3 +12,4 @@ Template.registerHelper('getBalance', function() {
     });
     return Session.get('balance');
 });
+

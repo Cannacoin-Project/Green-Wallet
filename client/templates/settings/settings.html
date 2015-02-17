@@ -72,7 +72,6 @@
             <i class="dropdown icon"></i>
             Network Settings: {{#if getInfo}} Online {{else}} Offline {{/if}}
         </div>
-
         <div class="content">
             {{#if getInfo}}
                 <ul>
@@ -97,6 +96,7 @@
                     <li>Mininput: {{getInfo.mininput}}</li>
                     <li>Errors: {{getInfo.errors}}</li>
                 </ul>
+                <p align="center"><b>Last Sync:</b> {{getInfo.timestamp}}</p>
             {{else}}
                 <p>Sorry, the server is currently offline.</p>
             {{/if}}

@@ -1,7 +1,7 @@
 Template.receive.rendered = function(){
-    var selected = Session.get('selectedAddress');
-    $('#qrCode').qrcode({"text": selected, "color": "#646464"});
-    $('#' + selected).addClass('greenAddress');
+    var selectedAddress = Session.get('selectedAddress');
+    $('#qrCode').qrcode({"text": selectedAddress, "color": "#646464"});
+    $('#' + selectedAddress).addClass('greenAddress');
 };
 
 Template.receive.helpers({
@@ -19,21 +19,28 @@ Template.receive.helpers({
 
 Template.receive.events({
 	'click .address-text': function(e, t){
-		$('#qrCode').qrcode().empty();
-		$('#qrCode').qrcode({"text": this, "color": "#646464"});
+        //assign our address for ease of use;
+        var qr = $('#qrCode');
+        var address = this.toString();
+
+        //Slick QR fade action, (really tho this is probably some stupid method lol).
+        qr.fadeToggle(function(){
+            qr.qrcode().empty();
+            qr.qrcode({"text": address, "color": "#646464"});
+            qr.fadeToggle();
+        });
+
+        //Toggle our classes for the address selectors, more UI goodies.
         $('.address-text').removeClass('greenAddress');
         $(e.currentTarget).toggleClass('greenAddress');
-        Session.set('selectedAddress', this.toString());
+        Session.set('selectedAddress', address);
 	},
 	'click #generate-address': function(e, t){
         Meteor.call('getAccountAddress', function(err, data){
             if(data.error){
                 toastr.warning(data.error);
             } else {
-                $('#qrCode').qrcode({
-                    "text": data,
-                    "color": "#646464"
-                });
+                $('#qrCode').qrcode({ "text": data, "color": "#646464" });
             }
         });
 	}
