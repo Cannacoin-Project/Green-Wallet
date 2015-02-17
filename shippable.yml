@@ -14,7 +14,7 @@ install:
   - curl https://install.meteor.com/ | sh
 before_script:
   - mkdir -p shippable/testresults
-  - cd tests
+  - cd test
 script: bash ./run-tests
 notifications:
   email:
